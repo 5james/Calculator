@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    @Html.ValidationSummary()
+
+    <div ng-controller="calcCtrl">
+
+        <div class="alert alert-danger alert-dismissable" ng-show="IsDisabled">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Error!</strong> Użyto niepoprawnego działania. Powód: {{ErrorReason}}
+        </div>
+
+        <center>
+            <table class="mytable">
+                <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <input class="mytextbox" id="myDisplay" name="myDisplay" readonly="readonly" value="{{Display}}" type="text">
+                        </td>
+                        <td><button class="mybutton" name="buttonC" value="C" ng-click="processInput('c')">C</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="mybutton" name="button7" value="7" ng-disabled="IsDisabled" ng-click="processInput('7')">7</button></td>
+                        <td><button class="mybutton" name="button8" value="8" ng-disabled="IsDisabled" ng-click="processInput('8')">8</button></td>
+                        <td><button class="mybutton" name="button9" value="9" ng-disabled="IsDisabled" ng-click="processInput('9')">9</button></td>
+                        <td><button class="mybutton" name="button/" value="/" ng-disabled="IsDisabled" ng-click="processInput('/')">/</button></td>
+                        <td><button class="mybutton" name="buttonSqrt" value="sqrt" ng-disabled="IsDisabled" ng-click="processInput('sqrt')">sqrt</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="mybutton" name="button4" value="4" ng-disabled="IsDisabled" ng-click="processInput('4')">4</button></td>
+                        <td><button class="mybutton" name="button5" value="5" ng-disabled="IsDisabled" ng-click="processInput('5')">5</button></td>
+                        <td><button class="mybutton" name="button6" value="6" ng-disabled="IsDisabled" ng-click="processInput('6')">6</button></td>
+                        <td><button class="mybutton" name="button*" value="*" ng-disabled="IsDisabled" ng-click="processInput('*')">*</button></td>
+                        <td><button class="mybutton" name="button%" value="%" ng-disabled="IsDisabled" ng-click="processInput('%')">%</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="mybutton" name="button1" value="1" ng-disabled="IsDisabled" ng-click="processInput('1')">1</button></td>
+                        <td><button class="mybutton" name="button2" value="2" ng-disabled="IsDisabled" ng-click="processInput('2')">2</button></td>
+                        <td><button class="mybutton" name="button3" value="3" ng-disabled="IsDisabled" ng-click="processInput('3')">3</button></td>
+                        <td><button class="mybutton" name="button-" value="-" ng-disabled="IsDisabled" ng-click="processInput('-')">-</button></td>
+                        <td rowspan="2"><button class="mybuttonequal" name="button=" value="=" ng-disabled="IsDisabled" ng-click="processInput('=')">=</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="mybutton" name="button0" value="0" ng-disabled="IsDisabled" ng-click="processInput('0')">0</button></td>
+                        <td><button class="mybutton" name="button." value="." ng-disabled="IsDisabled" ng-click="processInput('.')">.</button></td>
+                        <td><button class="mybutton" name="button+/-" value="+/-" ng-disabled="IsDisabled" ng-click="processInput('+/-')">+/-</button></td>
+                        <td><button class="mybutton" name="button+" value="+" ng-disabled="IsDisabled" ng-click="processInput('+')">+</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+}
+@Scripts.Render("~/Scripts/calcCtrl.js")
