@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CalcASP.Models.CalcModel
+@{
+    ViewBag.Title = "Author";
+}
+
+@using (Html.BeginForm())
+{@Html.ValidationSummary()
+
+    <center>
+        <div>
+            author: Jakub Guzek
+        </div>
+    </center>
+
+}

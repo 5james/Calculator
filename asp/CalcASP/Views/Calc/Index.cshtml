@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CalcASP.Models.CalcModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{@Html.ValidationSummary()
+    
+        if (@Model.IsDisabled)
+        {
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                <strong>Error!</strong> Użyto niepoprawnego działania. Powód: @Model.ErrorReason
+            </div>
+        }
+
+    <center>
+        <table class="mytable">
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        @Html.TextBox("myDisplay", @Model.Display, new { @readonly = "readonly", Class = "mytextbox" })
+                    </td>
+                    <td >@Html.Button("C", new { Name = "button", Value = "C", Class = "mybutton" })</td>
+                </tr>
+                <tr>
+                    <td>@Html.Button("7", new { Name = "button", Value = "7", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("8", new { Name = "button", Value = "8", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("9", new { Name = "button", Value = "9", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("/", new { Name = "button", Value = "/", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("sqrt", new { Name = "button", Value = "sqrt", Class = "mybutton" }, @Model.IsDisabled)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Button("4", new { Name = "button", Value = "4", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("5", new { Name = "button", Value = "5", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("6", new { Name = "button", Value = "6", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("*", new { Name = "button", Value = "*", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("%", new { Name = "button", Value = "%", Class = "mybutton" }, @Model.IsDisabled)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Button("1", new { Name = "button", Value = "1", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("2", new { Name = "button", Value = "2", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("3", new { Name = "button", Value = "3", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("-", new { Name = "button", Value = "-", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td rowspan="2">@Html.Button("=", new { Name = "button", Value = "=", Class = "mybuttonequal" }, @Model.IsDisabled)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Button("0", new { Name = "button", Value = "0", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button(".", new { Name = "button", Value = ".", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("+/-", new { Name = "button", Value = "+/-", Class = "mybutton" }, @Model.IsDisabled)</td>
+                    <td>@Html.Button("+", new { Name = "button", Value = "+", Class = "mybutton" }, @Model.IsDisabled)</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+
+}
